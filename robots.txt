@@ -1,0 +1,30 @@
+
+Robots · TXT
+User-agent: *
+Allow: /
+ 
+Sitemap: https://www.carewellhaven.com/sitemap.xml
+ 
+# =====================================================
+# Robots.txt for CareWell Haven Nursing Services
+# https://www.carewellhaven.com/
+# =====================================================
+
+User-agent: *
+Allow: /
+
+# Block system folders if they exist
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /test/
+Disallow: /.git/
+Disallow: /.env
+
+# Sitemap
+Sitemap: https://www.carewellhaven.com/sitemap.xml
+
+# Host (Optional)
+Host: https://www.carewellhaven.com
