@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer - CareWell Haven</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free) for real icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* base & reset */
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:#fff;
+      color:#152538;
+      -webkit-font-smoothing:antialiased;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    img{max-width:280px;display:block}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    button{font:inherit;cursor:pointer}
+    .wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+    h1,h2,h3,h4{font-family:'Fraunces',serif;color:#0A3258;font-weight:600;line-height:1.12}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0A7C4D;margin-bottom:14px}
+    .eyebrow::before{content:'';width:22px;height:2px;background:#C9A05C;display:inline-block}
+    .sec-head{max-width:640px;margin-bottom:46px}
+    .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+    .sec-head h2{font-size:clamp(28px,4vw,42px);margin-bottom:14px}
+    .sec-head p{color:#5A6B7D;font-size:16.5px;line-height:1.65}
+    section{padding:96px 0}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:100px;font-weight:700;font-size:14.5px;border:1.5px solid transparent;transition:.25s;white-space:nowrap}
+    .btn-primary{background:#0EA968;color:#fff;box-shadow:0 14px 30px -10px rgba(14,169,104,.55)}
+    .btn-primary:hover{background:#0A7C4D;transform:translateY(-2px)}
+    .btn-navy{background:#0A3258;color:#fff}
+    .btn-navy:hover{background:#123E6B;transform:translateY(-2px)}
+    .btn-sm{padding:10px 18px;font-size:13px}
+
+    /* reveal */
+    [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+    [data-reveal].in{opacity:1;transform:translateY(0)}
+
+    /* contact section */
+    .contact{background:#fff;flex:1}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:stretch}
+    .cc-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+    .cc-card{display:flex;gap:12px;background:#F5F8FA;border-radius:16px;padding:16px}
+    .cc-card .cc-ic{width:40px;height:40px;border-radius:10px;background:#0A3258;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+    .cc-card strong{display:block;color:#0A3258;font-size:13px;margin-bottom:3px}
+    .cc-card span{color:#5A6B7D;font-size:12.8px;line-height:1.4;word-break:break-word}
+    .map-frame{margin-top:22px;border-radius:16px;overflow:hidden;border:1px solid #E4EAEF;height:240px}
+    .map-frame iframe{width:100%;height:100%;border:0}
+    .contact-left{display:flex;flex-direction:column;height:100%}
+    .form-card{background:#F5F8FA;border-radius:18px;padding:34px;border:1px solid #E4EAEF;display:flex;flex-direction:column;height:100%}
+    .form-card form{display:flex;flex-direction:column;flex:1}
+    .fc-spacer{flex:1}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+    .form-card input,.form-card select,.form-card textarea{width:100%;padding:13px 15px;border-radius:10px;border:1px solid #E4EAEF;font-family:inherit;font-size:14px;background:#fff}
+    .form-card label{font-size:12.5px;font-weight:700;color:#0A3258;margin-bottom:6px;display:block}
+    .form-card textarea{resize:vertical;min-height:90px}
+    @media(max-width:900px){.contact-grid{grid-template-columns:1fr}.contact-left,.form-card{height:auto}}
+    @media(max-width:480px){.cc-list{grid-template-columns:1fr}}
+    @media(max-width:560px){.form-row{grid-template-columns:1fr}}
+
+    /* ===== FOOTER - FULLY FIXED & STICKY ===== */
+    footer{
+      background:#0A3258;
+      color:#CFE0F0;
+      padding-top:70px;
+      flex-shrink:0;
+      width:100%;
+      margin-top:auto; /* This pushes footer to bottom */
+      position:relative;
+      z-index:10;
+    }
+    .foot-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1.2fr;
+      gap:40px;
+      padding-bottom:50px;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .foot-brand .footer-logo{
+      height:80px; /* Increased from 86px */
+      width: 200px;;
+      margin-bottom:18px;
+      display:block;
+      object-fit:contain;
+      background:#fff;
+      padding:1px 1px; /* Increased padding */
+      border-radius:14px;
+      box-shadow:0 10px 28px rgba(0,0,0,.16);
+      transform:scale(1.02);
+    }
+    .foot-brand p{font-size:13.5px;line-height:1.7;color:#9FB6CB;max-width:290px}
+    .foot-social{display:flex;gap:10px;margin-top:18px}
+    .foot-social a{
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:rgba(255,255,255,.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:17px;
+      font-weight:600;
+      color:#CFE0F0;
+      transition:0.3s;
+    }
+    .foot-social a:hover{background:rgba(255,255,255,.16);transform:translateY(-2px)}
+    footer h5{color:#fff;font-size:14.5px;margin-bottom:18px;font-weight:800}
+    footer ul{display:flex;flex-direction:column;gap:11px}
+    footer ul a{font-size:13.5px;color:#9FB6CB;transition:0.3s}
+    footer ul a:hover{color:#fff;padding-left:4px}
+    .foot-news{display:flex;margin-top:8px}
+    .foot-news input{
+      flex:1;
+      padding:12px 14px;
+      border:none;
+      border-radius:10px 0 0 10px;
+      font-family:inherit;
+      font-size:13px;
+      background:#fff;
+      outline:none;
+    }
+    .foot-news button{
+      padding:0 20px;
+      border-radius:0 10px 10px 0;
+      background:#0EA968;
+      color:#fff;
+      border:none;
+      font-weight:800;
+      transition:0.3s;
+      cursor:pointer;
+    }
+    .foot-news button:hover{background:#0A7C4D}
+    .foot-bottom{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 0;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:12.5px;
+      color:#8CA6BE;
+    }
+    .foot-bottom .fb-links{display:flex;gap:18px;flex-wrap:wrap}
+    .foot-bottom .fb-links a{transition:0.3s}
+    .foot-bottom .fb-links a:hover{color:#fff}
+
+    /* responsive footer */
+    @media(max-width:900px){
+      .foot-grid{
+        grid-template-columns:1fr 1fr;
+        gap:30px;
+      }
+    }
+    @media(max-width:560px){
+      .foot-grid{
+        grid-template-columns:1fr;
+        gap:25px;
+      }
+      .foot-bottom{
+        flex-direction:column;
+        text-align:center;
+      }
+      .foot-bottom .fb-links{
+        justify-content:center;
+      }
+    }
+
+    /* floating widgets – only top button remains */
+    .floaters{position:fixed;right:22px;bottom:22px;display:flex;flex-direction:column;gap:12px;z-index:400;align-items:flex-end}
+    .fl-btn{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(10,50,88,.5);color:#fff;position:relative;font-size:22px;transition:.2s;background:#0A3258}
+    .fl-btn.top{background:#fff;color:#0A3258;border:1px solid #E4EAEF;width:44px;height:44px;opacity:0;pointer-events:none;transition:.3s;font-size:20px;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .fl-btn.top.show{opacity:1;pointer-events:all}
+    .fl-btn:hover{transform:scale(1.03)}
+  </style>
+</head>
+<body>
+
+<!-- contact section -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-left" data-reveal>
+      <div class="eyebrow">Get In Touch</div>
+      <h2 style="font-size:clamp(26px,3.6vw,34px);">We're Here Whenever You Need Us</h2>
+      <p style="color:#5A6B7D; margin-top:12px;">Reach out for bookings, questions or emergency care support — our team responds fast.</p>
+      <div class="cc-list">
+        <div class="cc-card"><div class="cc-ic"><i class="fas fa-phone-alt"></i></div><div><strong>Local Branch Phone</strong><span id="ccPhone">7669094224</span></div></div>
+        <div class="cc-card"><div class="cc-ic"><i class="fas fa-globe"></i></div><div><strong>Website</strong><span>www.carewellhaven.com</span></div></div>
+        <div class="cc-card"><div class="cc-ic"><i class="fas fa-map-marker-alt"></i></div><div><strong>Address</strong><span id="ccAddress">OFFICE - C-373, NEW ASHOK NAGAR. DELHI. 110096 INDIA</span></div></div>
+        <div class="cc-card"><div class="cc-ic"><i class="fas fa-clock"></i></div><div><strong>Working Hours</strong><span>24×7 — Emergency support</span></div></div>
+      </div>
+      <div class="map-frame">
+        <iframe id="mapFrame" src="https://www.google.com/maps?q=28.5963184,77.3093032&z=16&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="form-card" data-reveal id="appointment">
+      <h3 style="color:#0A3258; margin-bottom:6px;">Book an Appointment</h3>
+      <p style="font-size:13.5px; color:#5A6B7D; margin-bottom:20px;">Fill the form and our care coordinator in <strong id="apptLoc">Noida</strong> will call you back shortly.</p>
+      <form id="apptForm" onsubmit="return false;">
+        <div class="form-row">
+          <div><label>Full Name</label><input type="text" id="apptName" placeholder="Your name" required></div>
+          <div><label>Phone Number</label><input type="tel" id="apptPhone" placeholder="10-digit number" required></div>
+        </div>
+        <div class="form-row">
+          <div><label>Service Needed</label>
+            <select id="apptService"><option>Skilled Nursing Care</option><option>Elderly Patient Care</option><option>ICU at Home</option><option>Post Surgery Care</option><option>Physiotherapy</option><option>Baby / Mother Care</option><option>Other</option></select>
+          </div>
+          <div><label>Preferred Date</label><input type="date" id="apptDate"></div>
+        </div>
+        <div style="margin-bottom:14px;"><label>Message</label><textarea id="apptMessage" placeholder="Tell us more about the care required…"></textarea></div>
+        <div class="fc-spacer"></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;" id="apptSubmit">Request Appointment</button>
+        <p id="apptSuccess" style="display:none; margin-top:12px; color:#0A7C4D; font-weight:700; font-size:13.5px;">✔ Thank you! Redirecting you to WhatsApp…</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- footer - FULLY STICKY -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img class="footer-logo" src="logo.png" alt="CareWell Haven">
+        <p>Professional nursing care at home that brings healing, comfort, dignity and compassionate healthcare to patients and elderly individuals.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/CarewellHaven" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/carewell_haven/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html#about" target="_top">About Us</a></li>
+          <li><a href="index.html#services" target="_top">Services</a></li>
+          <li><a href="index.html#packages" target="_top">Packages</a></li>
+          <li><a href="index.html#gallery" target="_top">Gallery</a></li>
+          <li><a href="index.html#faq" target="_top">FAQ</a></li>
+          <li><a href="index.html#contact" target="_top">Career</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="Elderly_Patient_Care.html" target="_top">Elderly Care</a></li>
+          <li><a href="ICU_at_Home.html" target="_top">ICU at Home</a></li>
+          <li><a href="Post_Surgery_Care.html" target="_top">Post Surgery Care</a></li>
+          <li><a href="Physiotherapy.html" target="_top">Physiotherapy</a></li>
+          <li><a href="index.html#equipment" target="_top">Equipment on Rent</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Stay Updated</h5>
+        <p style="font-size:13px; color:#9FB6CB; margin-bottom:6px;">Subscribe for healthcare tips &amp; updates.</p>
+        <div class="foot-news">
+          <input placeholder="Your email">
+          <button>Join</button>
+        </div>
+        <p style="font-size:12.5px; color:#9FB6CB; margin-top:16px;">🚨 Emergency: <a href="tel:7669094224" style="color:#fff; font-weight:700;">7669094224</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>
+        Designed & Developed by 
+        <a href="https://yourdigitalcrew.com/" target="_blank" rel="noopener noreferrer" style="color:yellow; font-weight:700;">
+          Your Digital Crew
+        </a>.
+      </span>
+      <div class="fb-links">
+        <a href="privacy-policy.html" target="_top">Privacy Policy</a>
+        <a href="terms-conditions.html" target="_top">Terms &amp; Conditions</a>
+        <a href="refund-policy.html" target="_top">Refund Policy</a>
+        <a href="sitemap.xml" target="_top">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- floating widgets: only back-to-top -->
+<div class="floaters">
+  <button class="fl-btn top" id="topBtn" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+</div>
+
+<script>
+  (function() {
+    // back to top
+    var topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', function() {
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollY > 500) {
+        topBtn.classList.add('show');
+      } else {
+        topBtn.classList.remove('show');
+      }
+    });
+    topBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // reveal on scroll
+    var revealEls = document.querySelectorAll('[data-reveal]');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, index) {
+        if (entry.isIntersecting) {
+          setTimeout(function() {
+            entry.target.classList.add('in');
+          }, (index % 4) * 90);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el) { observer.observe(el); });
+
+    // appointment form -> WhatsApp
+    var form = document.getElementById('apptForm');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('apptName').value.trim();
+        var phone = document.getElementById('apptPhone').value.trim();
+        var service = document.getElementById('apptService').value;
+        var date = document.getElementById('apptDate').value;
+        var message = document.getElementById('apptMessage').value.trim();
+
+        var lines = [
+          'New Appointment Request',
+          'Name: ' + name,
+          'Phone: ' + phone,
+          'Service Needed: ' + service
+        ];
+        if (date) lines.push('Preferred Date: ' + date);
+        if (message) lines.push('Message: ' + message);
+
+        var text = encodeURIComponent(lines.join('\n'));
+        document.getElementById('apptSubmit').style.display = 'none';
+        document.getElementById('apptSuccess').style.display = 'block';
+        window.open('https://wa.me/917669094224?text=' + text, '_blank');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

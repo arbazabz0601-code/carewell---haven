@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Header - CareWell Haven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A3258;
+    --navy-2:#123E6B;
+    --navy-soft:#E8F0F8;
+    --emerald:#0EA968;
+    --emerald-dark:#0A7C4D;
+    --emerald-soft:#E5F7EE;
+    --gold:#C9A05C;
+    --ink:#152538;
+    --ink-soft:#5A6B7D;
+    --paper:#FFFFFF;
+    --mist:#F5F8FA;
+    --line:#E4EAEF;
+    --shadow: 0 20px 50px -20px rgba(10,50,88,.25);
+    --radius:18px;
+    --ff-display:'Fraunces', serif;
+    --ff-body:'Plus Jakarta Sans', sans-serif;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--ff-body); color:var(--ink); background:var(--paper); -webkit-font-smoothing:antialiased;}
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 24px;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:9px; padding:15px 26px; border-radius:100px; font-weight:700; font-size:14.5px; border:1.5px solid transparent; transition:.25s; white-space:nowrap;}
+  .btn-primary{background:var(--emerald); color:#fff; box-shadow:0 14px 30px -10px rgba(14,169,104,.55);}
+  .btn-primary:hover{background:var(--emerald-dark); transform:translateY(-2px);}
+  .btn-outline{background:transparent; border-color:rgba(255,255,255,.55); color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,.12); border-color:#fff;}
+  .btn-navy{background:var(--navy); color:#fff;}
+  .btn-navy:hover{background:var(--navy-2); transform:translateY(-2px);}
+  .btn-ghost{background:var(--mist); color:var(--navy); border-color:var(--line);}
+  .btn-ghost:hover{background:var(--navy-soft);}
+  .btn-sm{padding:10px 18px; font-size:13px;}
+
+  .site-topwrap{position:fixed; top:0; left:0; right:0; width:100%; z-index:200;}
+  #topSpacer{width:100%;}
+  .topbar{background:var(--navy); color:#cfe0f0; font-size:13px;}
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; padding:9px 24px; gap:12px; flex-wrap:nowrap;}
+  .topbar .tb-item{display:flex; align-items:center; gap:7px; white-space:nowrap;}
+  .topbar a{color:#fff; font-weight:600;}
+  .topbar .tb-right{display:flex; gap:22px; flex-shrink:0;}
+  .topbar .tb-left{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0;}
+  @media(max-width:720px){ .topbar .tb-left span:last-child{display:none;} .tb-right{gap:14px;} }
+  @media(max-width:560px){ .topbar .tb-right .tb-item:last-child{display:none;} .topbar .wrap{padding:8px 16px;} }
+
+  /* ---------- header ---------- */
+  header.site{z-index:200; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); transition:box-shadow .3s;}
+  header.site.scrolled{box-shadow:0 10px 30px -18px rgba(10,50,88,.35);}
+  .nav-row{display:flex; align-items:center; justify-content:space-between; padding:12px 24px; gap:14px; flex-wrap:nowrap;}
+  .brand{display:flex; align-items:center; gap:10px; flex-shrink:0;}
+  .brand img{height:82px; width:auto; flex-shrink:0; max-width:none;}
+  .loc-dropdown{position:relative; flex-shrink:0;}
+  .loc-btn{display:flex; align-items:center; gap:6px; background:var(--mist); border:1px solid var(--line); padding:9px 14px; border-radius:100px; font-size:13px; font-weight:700; color:var(--navy); white-space:nowrap;}
+  .loc-btn .chev{font-size:10px; transition:.25s;}
+  .loc-dropdown.open .loc-btn .chev{transform:rotate(180deg);}
+  .loc-menu{position:absolute; top:calc(100% + 10px); left:0; background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:8px; min-width:190px; opacity:0; visibility:hidden; transform:translateY(-8px); transition:.22s; z-index:250;}
+  .loc-dropdown.open .loc-menu{opacity:1; visibility:visible; transform:translateY(0);}
+  .loc-menu a{display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:9px; font-size:13.5px; font-weight:700; color:var(--navy);}
+  .loc-menu a:hover{background:var(--mist);}
+  .loc-menu a.active{background:var(--emerald-soft); color:var(--emerald-dark);}
+  @media(max-width:560px){ .loc-btn span:not(.chev){display:none;} .loc-btn{padding:9px 12px;} .loc-menu{left:auto; right:0; min-width:170px; max-width:calc(100vw - 32px);} }
+  .main-nav{display:flex; gap:22px; align-items:center; flex-shrink:1; flex-wrap:nowrap; overflow:visible;}
+  .main-nav a{font-weight:600; font-size:17.5px; color:var(--navy); position:relative; padding:6px 0; white-space:nowrap;}
+  .main-nav a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--emerald); transition:.25s;}
+  .main-nav a:hover::after{width:100%;}
+  .nav-drop{position:relative;}
+  .nav-drop-trigger{display:flex; align-items:center; gap:4px;}
+  .dd-arrow{font-size:10px; transition:.25s; display:inline-block;}
+  .nav-drop-panel{position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%) translateY(-8px); background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:10px; min-width:230px; opacity:0; visibility:hidden; transition:.22s; z-index:250; display:flex; flex-direction:column; gap:2px;}
+  .nav-drop:hover .nav-drop-panel{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0);}
+  .nav-drop:hover .dd-arrow{transform:rotate(180deg);}
+  .nav-drop-panel a{padding:9px 12px; border-radius:9px; font-size:13.5px; font-weight:600; color:var(--navy); white-space:nowrap;}
+  .nav-drop-panel a::after{display:none;}
+  .nav-drop-panel a:hover{background:var(--mist);}
+  .nav-actions{display:flex; align-items:center; gap:12px; flex-shrink:0;}
+  .icon-btn{width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:var(--mist); border:1px solid var(--line); color:var(--navy); flex-shrink:0;}
+  @media(max-width:360px){ .nav-actions .icon-btn{display:none;} }
+  .burger{display:none; flex-direction:column; gap:5px; width:44px; height:44px; align-items:center; justify-content:center; border-radius:12px; background:var(--mist); border:1px solid var(--line); flex-shrink:0;}
+  .burger span{width:20px; height:2px; background:var(--navy); border-radius:2px;}
+  /* Style 1 - Glow Pulse */
+.btn-navy {
+  position: relative;
+  overflow: hidden;
+  animation: glowPulse 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 50, 100, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px 10px rgba(0, 50, 100, 0.2);
+    transform: scale(1.03);
+  }
+}
+
+.btn-navy:hover {
+  animation: none;
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 40px 15px rgba(0, 50, 100, 0.3) !important;
+}
+  @media(max-width:1240px){ .main-nav{display:none;} .nav-actions .btn-navy{display:none;} .burger{display:flex;} }
+
+  .mobile-menu{position:fixed; top:0; bottom:0; right:-100%; width:100%; max-width:100vw; background:var(--navy); z-index:999; display:flex; flex-direction:column; padding:26px 26px 40px; transition:right .35s cubic-bezier(.2,.7,.3,1); overflow-y:auto;}
+  .mobile-menu.open{right:0;}
+  .mobile-menu .mm-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:34px;}
+  .mobile-menu a.mm-link{display:block; color:#fff; font-family:var(--ff-display); font-size:26px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.12);}
+  .mm-group{border-bottom:1px solid rgba(255,255,255,.12);}
+  .mm-group .mm-toggle{display:flex; justify-content:space-between; align-items:center; width:100%; background:none; border:none; border-bottom:none; text-align:left; color:#fff; font-family:var(--ff-display); font-size:26px; padding:14px 0;}
+  .mm-chev{font-size:15px; color:#B9CBDD; transition:transform .3s;}
+  .mm-group.open .mm-chev{transform:rotate(180deg);}
+  .mm-sub{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+  .mm-sub a{display:block; color:#CFE0F0; font-family:var(--ff-body); font-size:15px; font-weight:700; padding:10px 0 10px 16px; border-left:2px solid rgba(255,255,255,.18); margin-left:2px;}
+  .mobile-menu .mm-close{width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.12); color:#fff; display:flex; align-items:center; justify-content:center; border:none;}
+  .mobile-menu .mm-cta{margin-top:auto; display:flex; gap:12px;}
+  .progress-bar{position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,var(--emerald),var(--gold)); z-index:999; width:0%;}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="site-topwrap" id="siteTopwrap">
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-item tb-left"><span>📍</span><span id="tbAddress">D-65, Noida Sector-2, Uttar Pradesh - 201301</span></div>
+    <div class="tb-right">
+      <div class="tb-item"><span>🚨</span> Emergency: <a href="tel:7669094224">7669094224</a></div>
+      <div class="tb-item">Care Beyond Walls, Comfort Beyond Measure</div>
+    </div>
+  </div>
+</div>
+<!-- header -->
+<header class="site" id="siteHeader">
+  <div class="nav-row wrap">
+    <a href="#home" class="brand">
+      <img src="logo.png" alt="CareWell Haven Nursing Services logo">
+    </a>
+    <div class="loc-dropdown" id="locDropdown">
+      <button class="loc-btn" id="locBtn" aria-haspopup="true" aria-expanded="false">📍 <span id="locLabel">Noida</span> <span class="chev">▾</span></button>
+      <div class="loc-menu" id="locMenu">
+        <a href="#" data-loc="Noida" class="active">📍 Noida</a>
+        <a href="#" data-loc="Delhi">📍 Delhi</a>
+        <a href="#" data-loc="Gurugram">📍 Gurugram</a>
+        <a href="#" data-loc="Ghaziabad">📍 Ghaziabad</a>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <div class="nav-drop">
+        <a href="index.html#services" class="nav-drop-trigger">Services <span class="dd-arrow">▾</span></a>
+        <div class="nav-drop-panel">
+          <a href="skilled-nursing-care.html">Skilled Nursing Care</a>
+          <a href="icu-at-home.html">ICU at Home</a>
+          <a href="post-surgery-care.html">Post Surgery Care</a>
+          <a href="elderly-patient-care.html">Elderly Patient Care</a>
+          <a href="physiotherapy.html">Physiotherapy</a>
+          <a href="mother-and-baby-care.html">Mother &amp; Baby Care</a>
+          <a href="emergency-nursing.html">Emergency Nursing</a>
+        </div>
+      </div>
+      <a href="index.html#about">About</a>
+      <div class="nav-drop">
+        <a href="index.html#equipment" class="nav-drop-trigger">Equipment on Rent <span class="dd-arrow">▾</span></a>
+        <div class="nav-drop-panel">
+          <a href="hospital-bed.html">Hospital Bed</a>
+          <a href="wheelchair.html">Wheelchair</a>
+          <a href="oxygen-concentrator.html">Oxygen Concentrator</a>
+          <a href="bipap-cpap-machine.html">BiPAP / CPAP Machine</a>
+          <a href="walker-and-commode.html">Walker &amp; Commode</a>
+          <a href="patient-monitor.html">Patient Monitor</a>
+          <a href="nebulizer.html">Nebulizer</a>
+          <a href="suction-machine.html">Suction Machine</a>
+        </div>
+   </div>
+                    <a href="index.html#gallery">Gallery</a>
+                    <a href="index.html#testimonials">Reviews</a>
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+                <div class="nav-actions">
+                    <a href="tel:7669094224" class="btn btn-navy btn-sm">Call Now :- +91 7669094224</a>
+                    <button class="burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </header>
+
+ 
+
+
+
+        
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+ 
+  // keep page content clear of the fixed header
+  var topwrap = document.getElementById('siteTopwrap');
+  var topSpacer = document.getElementById('topSpacer');
+  function sizeSpacer(){ topSpacer.style.height = topwrap.offsetHeight + 'px'; }
+  sizeSpacer();
+  window.addEventListener('resize', sizeSpacer);
+  window.addEventListener('load', sizeSpacer);
+ 
+  // scroll progress + header shadow
+  var header = document.getElementById('siteHeader');
+  var progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+    header.classList.toggle('scrolled', h.scrollTop > 10);
+  });
+ 
+  // location dropdown
+  var locData = {
+    'Noida': { address:'D-65, Noida Sector-2, Uttar Pradesh - 201301', phone:'7669094224', map:'28.5963184,77.3093032&z=16' },
+    'Delhi': { address:'12, Lajpat Nagar-II, New Delhi - 110024', phone:'7669094224', map:'Lajpat+Nagar+2+New+Delhi' },
+    'Gurugram': { address:'SCO 45, Sector-14, Gurugram, Haryana - 122001', phone:'7669094224', map:'Sector+14+Gurugram+Haryana' },
+    'Ghaziabad': { address:'B-22, Raj Nagar Extension, Ghaziabad - 201017', phone:'7669094224', map:'Raj+Nagar+Extension+Ghaziabad' }
+  };
+  var tbAddress = document.getElementById('tbAddress');
+  var ccAddress = document.getElementById('ccAddress');
+  var ccPhone = document.getElementById('ccPhone');
+  var mapFrame = document.getElementById('mapFrame');
+  var apptLoc = document.getElementById('apptLoc');
+  function applyLocation(loc){
+    var d = locData[loc];
+    if(!d) return;
+    tbAddress.textContent = d.address;
+    if(ccAddress) ccAddress.textContent = d.address;
+    if(ccPhone) ccPhone.textContent = d.phone;
+    if(apptLoc) apptLoc.textContent = loc;
+    if(mapFrame) mapFrame.src = 'https://www.google.com/maps?q=' + d.map + '&output=embed';
+    [tbAddress, ccAddress, ccPhone].forEach(function(el){
+      if(!el) return;
+      el.style.transition = 'opacity .25s';
+      el.style.opacity = '0';
+      setTimeout(function(){ el.style.opacity = '1'; }, 120);
+    });
+  }
+  var locDropdown = document.getElementById('locDropdown');
+  var locBtn = document.getElementById('locBtn');
+  var locLabel = document.getElementById('locLabel');
+  locBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    locDropdown.classList.toggle('open');
+    locBtn.setAttribute('aria-expanded', locDropdown.classList.contains('open'));
+  });
+  document.querySelectorAll('#locMenu a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      document.querySelectorAll('#locMenu a').forEach(function(x){ x.classList.remove('active'); });
+      a.classList.add('active');
+      var loc = a.getAttribute('data-loc');
+      locLabel.textContent = loc;
+      locDropdown.classList.remove('open');
+      applyLocation(loc);
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!locDropdown.contains(e.target)) locDropdown.classList.remove('open');
+  });
+
+  // mobile menu
+  var burger = document.getElementById('burgerBtn');
+  var mm = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function(){ mm.classList.add('open'); });
+  document.getElementById('mmClose').addEventListener('click', function(){ mm.classList.remove('open'); });
+  mm.querySelectorAll('.mm-link:not(.mm-toggle), .mm-sub a').forEach(function(l){ l.addEventListener('click', function(){ mm.classList.remove('open'); }); });
+  mm.querySelectorAll('.mm-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = btn.closest('.mm-group');
+      var sub = document.getElementById(btn.getAttribute('data-target'));
+      var isOpen = group.classList.contains('open');
+      mm.querySelectorAll('.mm-group').forEach(function(g){ g.classList.remove('open'); g.querySelector('.mm-sub').style.maxHeight = null; });
+      if(!isOpen){ group.classList.add('open'); sub.style.maxHeight = sub.scrollHeight + 'px'; }
+    });
+  });
+});
+</script>
+ 
+</body>
+</html>
+ 
+
+
+
+ 
+
+
+
